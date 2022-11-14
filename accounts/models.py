@@ -5,18 +5,18 @@ from django.utils.translation import gettext_lazy as _
 
 
 class AccountManager(BaseUserManager):
-    def create_user(self, username, password=None, **extra_fields):
-        if not username:
-            raise TypeError('Email not')
-        user = self.model(phone=username, **extra_fields)
+    def create_user(self, phone, password=None, **extra_fields):
+        if not phone:
+            raise TypeError('Phone not')
+        user = self.model(phone=phone, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, password=None, **extra_fields):
+    def create_superuser(self, phone, password=None, **extra_fields):
         if not password:
             raise TypeError('password no')
-        user = self.create_user(username, password, **extra_fields)
+        user = self.create_user(phone, password, **extra_fields)
         user.is_staff = True
         user.is_superuser = True
         user.is_admin = True
@@ -29,9 +29,8 @@ class Account(AbstractBaseUser, PermissionsMixin):
         (1, 'Daraxt ektiruvchi'),
         (2, 'Daraxt ekuvchi')
     )
-    username = models.CharField(max_length=50, unique=True, db_index=True)
+    phone = models.CharField(max_length=14, unique=True, db_index=True)
     image = models.ImageField(null=True, blank=True, upload_to='accounts/')
-    phone = models.CharField(max_length=14, null=True, blank=True)
     role = models.IntegerField(choices=ROLE, default=1)
     bio = models.TextField(null=True, blank=True)
     is_superuser = models.BooleanField(default=False)
@@ -41,11 +40,11 @@ class Account(AbstractBaseUser, PermissionsMixin):
     date_created = models.DateTimeField(auto_now_add=True)
 
     objects = AccountManager()
-    USERNAME_FIELD = 'username'
+    USERNAME_FIELD = 'phone'
     REQUIRED_FIELDS = []
 
     def __str__(self):
-        return f'{self.username}'
+        return f'{self.phone}'
 
 
 class VerifyPhone(models.Model):
