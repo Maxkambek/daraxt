@@ -4,7 +4,7 @@ from .serializers import NewsSerializer, ForUserSerializer
 
 
 class NewsListAPIView(generics.ListAPIView):
-    queryset = News.objects.all().order_by('id')
+    queryset = News.objects.all().order_by('-id')
     serializer_class = NewsSerializer
 
 
