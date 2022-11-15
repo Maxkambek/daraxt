@@ -31,22 +31,23 @@ class District(models.Model):
         return self.name
 
 
+class TreeDelivery(models.Model):
+    name = models.CharField(max_length=221)
+    address = models.ForeignKey(Region, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+
 class Trade(models.Model):
     type_tree = models.ForeignKey(TypeTree, on_delete=models.CASCADE)
     count_tree = models.PositiveIntegerField()
     district = models.ForeignKey(District, on_delete=models.CASCADE)
     address = models.CharField(max_length=221)
-    phone = models.CharField(max_length=15)
+    contract_number = models.CharField(max_length=30)
+    contract_date = models.CharField(max_length=20)
+    contract_file = models.FileField(upload_to='contract_files/')
+    delivery_company = models.ForeignKey(TreeDelivery, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.phone
-
-
-class TradeImage(models.Model):
-    trade = models.ForeignKey(Trade, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='trades/')
-
-    def __str__(self):
-        return self.trade.phone
-
-
+        return self.contract_number
