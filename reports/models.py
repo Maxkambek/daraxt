@@ -3,6 +3,12 @@ from trades.models import TypeTree, District
 
 
 class TreeReport(models.Model):
+    STATUS = (
+        (1, 'New'),
+        (2, 'Two'),
+        (3, 'Three'),
+    )
+    status = models.IntegerField(choices=STATUS, default=1)
     company_stir = models.CharField(max_length=20)
     company_name = models.CharField(max_length=221)
     owner_fio = models.CharField(max_length=221)
@@ -22,7 +28,7 @@ class TreeReport(models.Model):
 
 
 class ReportImage(models.Model):
-    report = models.ForeignKey(TreeReport, on_delete=models.CASCADE,related_name='reports_images')
+    report = models.ForeignKey(TreeReport, on_delete=models.CASCADE, related_name='reports_images')
     image = models.ImageField(upload_to='reports/')
 
     def __str__(self):

@@ -1,7 +1,6 @@
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
-import json
 from .serializers import ReportSerializer
 from .models import TreeReport
 from trades.models import Trade

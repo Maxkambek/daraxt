@@ -2,6 +2,12 @@ from django.db import models
 
 
 class Contract(models.Model):
+    STATUS = (
+        (1, 'New'),
+        (2, 'Two'),
+        (3, 'Three'),
+    )
+    status = models.IntegerField(choices=STATUS, default=1)
     number_contract = models.CharField(max_length=64)
     date_contract = models.CharField(max_length=20)
     number_akt = models.CharField(max_length=50)
@@ -32,6 +38,12 @@ class ContractImage(models.Model):
 
 
 class ContractWithPartner(models.Model):
+    STATUS = (
+        (1, 'New'),
+        (2, 'Two'),
+        (3, 'Three'),
+    )
+    status = models.IntegerField(choices=STATUS, default=1)
     number_contract = models.CharField(max_length=64)
     date_contract = models.CharField(max_length=20)
     number_akt = models.CharField(max_length=50)

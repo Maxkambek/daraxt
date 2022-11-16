@@ -40,6 +40,12 @@ class TreeDeliveryCompany(models.Model):
 
 
 class Trade(models.Model):
+    STATUS = (
+        (1, 'New'),
+        (2, 'Two'),
+        (3, 'Three'),
+    )
+    status = models.IntegerField(choices=STATUS, default=1)
     type_tree = models.ForeignKey(TypeTree, on_delete=models.CASCADE)
     count_tree = models.PositiveIntegerField()
     district = models.ForeignKey(District, on_delete=models.CASCADE)
