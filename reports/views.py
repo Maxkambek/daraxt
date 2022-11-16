@@ -8,7 +8,6 @@ from trades.models import Trade
 from contracts.models import Contract, ContractWithPartner
 from trades.serializers import TradeSerializer
 from contracts.serializers import ContractSerializer, ContractWithPartnerSerializer
-from itertools import chain
 
 
 class TreeReportCreateAPIView(generics.CreateAPIView):
@@ -21,7 +20,9 @@ class DocsAPIView(APIView):
         trade = Trade.objects.all()
         contract = Contract.objects.all()
         report = TreeReport.objects.all()
+        partner = ContractWithPartner.objects.all()
+        partner_ser = ContractWithPartnerSerializer(partner, many=True).data
         trade_ser = TradeSerializer(trade, many=True).data
         contract_ser = ContractSerializer(contract, many=True).data
         report_ser = ReportSerializer(report, many=True).data
-        return Response([trade_ser, contract_ser, report_ser], status=200)
+        return Response([trade_ser, contract_ser, report_ser, partner_ser], status=200)
