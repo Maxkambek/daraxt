@@ -13,6 +13,7 @@ class Contract(models.Model):
     phone = models.CharField(max_length=15)
     number_report = models.CharField(max_length=20)
     description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.number_contract
@@ -23,7 +24,7 @@ class Contract(models.Model):
 
 
 class ContractImage(models.Model):
-    contract = models.ForeignKey(Contract, on_delete=models.CASCADE)
+    contract = models.ForeignKey(Contract, on_delete=models.CASCADE, verbose_name='contracts_images')
     image = models.ImageField(upload_to='contracts/')
 
     def __str__(self):
@@ -44,6 +45,7 @@ class ContractWithPartner(models.Model):
     partner_owner_jshshir = models.CharField(max_length=16)
     partner_fio = models.CharField(max_length=221)
     description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.number_contract

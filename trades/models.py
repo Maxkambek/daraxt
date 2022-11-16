@@ -31,7 +31,7 @@ class District(models.Model):
         return self.name
 
 
-class TreeDelivery(models.Model):
+class TreeDeliveryCompany(models.Model):
     name = models.CharField(max_length=221)
     address = models.ForeignKey(Region, on_delete=models.CASCADE)
 
@@ -47,7 +47,8 @@ class Trade(models.Model):
     contract_number = models.CharField(max_length=30)
     contract_date = models.CharField(max_length=20)
     contract_file = models.FileField(upload_to='contract_files/')
-    delivery_company = models.ForeignKey(TreeDelivery, on_delete=models.CASCADE)
+    delivery_company = models.ForeignKey(TreeDeliveryCompany, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.contract_number

@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import TreeReport
 
-# Register your models here.
+
+class TreeReportAdmin(admin.ModelAdmin):
+    list_display = ['id', 'company_name', 'company_stir']
+
+
+admin.site.register(TreeReport, TreeReportAdmin)

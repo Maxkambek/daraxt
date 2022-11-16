@@ -15,13 +15,14 @@ class TreeReport(models.Model):
     number_report = models.CharField(max_length=20)
     district = models.ForeignKey(District, on_delete=models.SET_NULL, null=True)
     address = models.CharField(max_length=30)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.company_name
 
 
 class ReportImage(models.Model):
-    report = models.ForeignKey(TreeReport, on_delete=models.CASCADE)
+    report = models.ForeignKey(TreeReport, on_delete=models.CASCADE,related_name='reports_images')
     image = models.ImageField(upload_to='reports/')
 
     def __str__(self):
