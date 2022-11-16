@@ -24,7 +24,7 @@ class Contract(models.Model):
 
 
 class ContractImage(models.Model):
-    contract = models.ForeignKey(Contract, on_delete=models.CASCADE, verbose_name='contracts_images')
+    contract = models.ForeignKey(Contract, on_delete=models.CASCADE, related_name='contracts_images')
     image = models.ImageField(upload_to='contracts/')
 
     def __str__(self):
