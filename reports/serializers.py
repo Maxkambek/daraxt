@@ -27,5 +27,6 @@ class ReportSerializer(serializers.ModelSerializer):
             'number_report',
             'district',
             'address',
-            'created_at'
+            'created_at',
+            'reports_images'
         ]
