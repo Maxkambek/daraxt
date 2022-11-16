@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
 
     'news',
     'accounts',
