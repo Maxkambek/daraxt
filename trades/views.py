@@ -1,4 +1,6 @@
-from rest_framework import generics
+from rest_framework import generics, permissions
+from rest_framework.authentication import TokenAuthentication
+
 from .models import Region, District, TreeClassifier, TypeTree, TreeDeliveryCompany, Trade
 from .serializers import RegionSerializer, DistrictSerializer, TreeTypeSerializer, TreeClassifierSerializer, \
     TreeDeliveryCompanySerializer, TradeSerializer
@@ -7,10 +9,14 @@ from .serializers import RegionSerializer, DistrictSerializer, TreeTypeSerialize
 class RegionListAPIView(generics.ListAPIView):
     queryset = Region.objects.all()
     serializer_class = RegionSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
 
 
 class DistrictListAPIView(generics.ListAPIView):
     serializer_class = DistrictSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
 
     def get_queryset(self):
         queryset = District.objects.all()
@@ -23,10 +29,14 @@ class DistrictListAPIView(generics.ListAPIView):
 class TreeClassifierListAPIView(generics.ListAPIView):
     queryset = TreeClassifier.objects.all()
     serializer_class = TreeClassifierSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
 
 
 class TypeTreeListAPIView(generics.ListAPIView):
     serializer_class = TreeTypeSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
 
     def get_queryset(self):
         queryset = TypeTree.objects.all()
@@ -38,6 +48,8 @@ class TypeTreeListAPIView(generics.ListAPIView):
 
 class TreeDeliveryListAPIView(generics.ListAPIView):
     serializer_class = TreeDeliveryCompanySerializer
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
 
     def get_queryset(self):
         queryset = TreeDeliveryCompany.objects.all()
@@ -50,4 +62,6 @@ class TreeDeliveryListAPIView(generics.ListAPIView):
 class TradeCreateAPIView(generics.CreateAPIView):
     queryset = Trade.objects.all()
     serializer_class = TradeSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
 
