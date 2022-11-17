@@ -1,12 +1,12 @@
 from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import ReportSerializer
+from .serializers import ReportSerializer, ReportSerializerReport
 from .models import TreeReport
 from trades.models import Trade
 from contracts.models import Contract, ContractWithPartner
-from trades.serializers import TradeSerializer
-from contracts.serializers import ContractSerializer, ContractWithPartnerSerializer
+from trades.serializers import TradeSerializerReport
+from contracts.serializers import ContractSerializerReport, ContractWithPartnerSerializerReport
 from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
 
@@ -39,10 +39,10 @@ class DocsAPIView(APIView):
             contract = contract.filter(name_company__icontains=search)
             report = report.filter(company_name__icontains=search)
             partner = partner.filter(partner_name__icontains=search)
-        partner_ser = ContractWithPartnerSerializer(partner, many=True).data
-        trade_ser = TradeSerializer(trade, many=True).data
-        contract_ser = ContractSerializer(contract, many=True).data
-        report_ser = ReportSerializer(report, many=True).data
+        partner_ser = ContractWithPartnerSerializerReport(partner, many=True).data
+        trade_ser = TradeSerializerReport(trade, many=True).data
+        contract_ser = ContractSerializerReport(contract, many=True).data
+        report_ser = ReportSerializerReport(report, many=True).data
         return Response({
             1: trade_ser,
             2: contract_ser,

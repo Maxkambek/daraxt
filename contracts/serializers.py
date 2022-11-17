@@ -15,6 +15,7 @@ class ContractSerializer(serializers.ModelSerializer):
         model = Contract
         fields = [
             'id',
+            'status',
             'number_contract',
             'date_contract',
             'number_akt',
@@ -31,11 +32,25 @@ class ContractSerializer(serializers.ModelSerializer):
         ]
 
 
+class ContractSerializerReport(serializers.ModelSerializer):
+    class Meta:
+        model = Contract
+        fields = [
+            'id',
+            'number_contract',
+            'date_contract',
+            'name_company',
+            'created_at'
+            'status',
+        ]
+
+
 class ContractWithPartnerSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContractWithPartner
         fields = [
             'id',
+            'status',
             'number_contract',
             'date_contract',
             'number_akt',
@@ -49,5 +64,19 @@ class ContractWithPartnerSerializer(serializers.ModelSerializer):
             'partner_owner_jshshir',
             'partner_fio',
             'description',
+            'created_at'
+        ]
+
+
+class ContractWithPartnerSerializerReport(serializers.ModelSerializer):
+    class Meta:
+        model = ContractWithPartner
+        fields = [
+            'id',
+            'status',
+            'number_contract',
+            'date_contract',
+            'name_company',
+            'partner_name',
             'created_at'
         ]

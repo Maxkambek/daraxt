@@ -15,6 +15,7 @@ class ReportSerializer(serializers.ModelSerializer):
         model = TreeReport
         fields = [
             'id',
+            'status',
             'company_stir',
             'company_name',
             'owner_fio',
@@ -29,4 +30,16 @@ class ReportSerializer(serializers.ModelSerializer):
             'address',
             'created_at',
             'reports_images'
+        ]
+
+
+class ReportSerializerReport(serializers.ModelSerializer):
+    class Meta:
+        model = TreeReport
+        fields = [
+            'id',
+            'status',
+            'company_name',
+            'number_report',
+            'created_at',
         ]

@@ -37,6 +37,7 @@ class TradeSerializer(serializers.ModelSerializer):
         model = Trade
         fields = [
             'id',
+            'status',
             'type_tree',
             'count_tree',
             'district',
@@ -44,5 +45,18 @@ class TradeSerializer(serializers.ModelSerializer):
             'contract_number',
             'contract_date',
             'contract_file',
-            'delivery_company'
+            'delivery_company',
+            'created_at',
+        ]
+
+
+class TradeSerializerReport(serializers.ModelSerializer):
+    class Meta:
+        model = Trade
+        fields = [
+            'id',
+            'status',
+            'contract_number',
+            'contract_date',
+            'created_at'
         ]
