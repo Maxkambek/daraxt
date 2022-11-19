@@ -20,6 +20,10 @@ class Contract(models.Model):
     number_report = models.CharField(max_length=20)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to='contracts')
+    image1 = models.ImageField(upload_to='contracts', null=True)
+    image2 = models.ImageField(upload_to='contracts', null=True)
+    image3 = models.ImageField(upload_to='contracts', null=True)
 
     def __str__(self):
         return self.number_contract
@@ -27,14 +31,6 @@ class Contract(models.Model):
     class Meta:
         verbose_name = 'Contracts'
         verbose_name_plural = 'Contracts'
-
-
-class ContractImage(models.Model):
-    contract = models.ForeignKey(Contract, on_delete=models.CASCADE, related_name='contracts_images')
-    image = models.ImageField(upload_to='contracts/')
-
-    def __str__(self):
-        return self.contract.number_contract
 
 
 class ContractWithPartner(models.Model):

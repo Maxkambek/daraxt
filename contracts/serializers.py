@@ -1,16 +1,8 @@
 from rest_framework import serializers
-from .models import Contract, ContractImage, ContractWithPartner
-
-
-class ContractImageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ContractImage
-        fields = ['id', 'image', 'contract']
+from .models import Contract, ContractWithPartner
 
 
 class ContractSerializer(serializers.ModelSerializer):
-    contracts_images = ContractImageSerializer(many=True)
-
     class Meta:
         model = Contract
         fields = [
@@ -28,7 +20,10 @@ class ContractSerializer(serializers.ModelSerializer):
             'number_report',
             'description',
             'created_at',
-            'contracts_images'
+            'image',
+            'image1',
+            'image2',
+            'image3',
         ]
 
 
