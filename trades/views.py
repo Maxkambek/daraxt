@@ -1,6 +1,8 @@
 from rest_framework import generics, permissions
 from rest_framework.authentication import TokenAuthentication
-
+# from rest_framework.response import Response
+# from rest_framework.views import APIView
+# import pandas as pd
 from .models import Region, District, TreeClassifier, TypeTree, TreeDeliveryCompany, Trade
 from .serializers import RegionSerializer, DistrictSerializer, TreeTypeSerializer, TreeClassifierSerializer, \
     TreeDeliveryCompanySerializer, TradeSerializer
@@ -64,4 +66,3 @@ class TradeCreateAPIView(generics.CreateAPIView):
     serializer_class = TradeSerializer
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [TokenAuthentication]
-

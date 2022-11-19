@@ -7,5 +7,5 @@ urlpatterns = [
     path('tree-classifier/', views.TreeClassifierListAPIView.as_view()),
     path('tree-type/', views.TypeTreeListAPIView.as_view()),
     path('delivery-company/', views.TreeDeliveryListAPIView.as_view()),
-    path('trade/', views.TradeCreateAPIView.as_view())
+    path('trade/', views.TradeCreateAPIView.as_view()),
 ]

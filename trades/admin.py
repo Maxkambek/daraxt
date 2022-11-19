@@ -1,4 +1,5 @@
 from django.contrib import admin
+from config import settings
 from .models import TreeClassifier, TypeTree, Region, District, TreeDeliveryCompany, Trade
 
 
@@ -24,6 +25,16 @@ class TreeDeliveryAdmin(admin.ModelAdmin):
 
 class TradeAdmin(admin.ModelAdmin):
     list_display = ['id', 'contract_number']
+
+    class Media:
+        if hasattr(settings, 'GOOGLE_MAPS_API_KEY') and settings.GOOGLE_MAPS_API_KEY:
+            css = {
+                'all': ('css/admin/location_picker.css',),
+            }
+            js = (
+                'https://maps.googleapis.com/maps/api/js?key={}'.format(settings.GOOGLE_MAPS_API_KEY),
+                'js/admin/location_picker.js',
+            )
 
 
 admin.site.register(TreeClassifier, TreeClassifierAdmin)

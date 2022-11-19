@@ -20,7 +20,7 @@ class Contract(models.Model):
     number_report = models.CharField(max_length=20)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='contracts')
+    image = models.ImageField(upload_to='contracts', null=True)
     image1 = models.ImageField(upload_to='contracts', null=True)
     image2 = models.ImageField(upload_to='contracts', null=True)
     image3 = models.ImageField(upload_to='contracts', null=True)

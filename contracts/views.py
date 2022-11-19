@@ -1,10 +1,5 @@
-from typing import List
-
-from django.core.files.uploadedfile import TemporaryUploadedFile
 from rest_framework import generics, permissions, status
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.response import Response
-from rest_framework.settings import api_settings
 from accounts.permissions import IsTreeEkuvchi, IsTreeEktiruvchi
 from .models import Contract, ContractWithPartner
 from .serializers import ContractSerializer, ContractWithPartnerSerializer

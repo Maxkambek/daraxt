@@ -20,8 +20,11 @@ class TreeReport(models.Model):
     phone = models.CharField(max_length=15)
     number_report = models.CharField(max_length=20)
     district = models.ForeignKey(District, on_delete=models.SET_NULL, null=True)
-    address = models.CharField(max_length=30)
     created_at = models.DateTimeField(auto_now_add=True)
+    latitude = models.DecimalField(
+        max_digits=9, decimal_places=6, null=True, blank=True)
+    longitude = models.DecimalField(
+        max_digits=9, decimal_places=6, null=True, blank=True)
 
     def __str__(self):
         return self.company_name

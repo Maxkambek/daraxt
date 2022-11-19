@@ -11,6 +11,8 @@ ALLOWED_HOSTS = ['*']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+GOOGLE_MAPS_API_KEY = 'AIzaSyAkkKvMyf8Tk3Q8s7MWXin6njbtjIjq2S4'
+
 AUTH_USER_MODEL = 'accounts.Account'
 
 INSTALLED_APPS = [

@@ -49,7 +49,10 @@ class Trade(models.Model):
     type_tree = models.ForeignKey(TypeTree, on_delete=models.CASCADE)
     count_tree = models.PositiveIntegerField()
     district = models.ForeignKey(District, on_delete=models.CASCADE)
-    address = models.CharField(max_length=221)
+    latitude = models.DecimalField(
+        max_digits=9, decimal_places=6, null=True, blank=True)
+    longitude = models.DecimalField(
+        max_digits=9, decimal_places=6, null=True, blank=True)
     contract_number = models.CharField(max_length=30)
     contract_date = models.CharField(max_length=20)
     contract_file = models.FileField(upload_to='contract_files/')
